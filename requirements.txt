@@ -1,0 +1,8 @@
+bottlenose
+Django==1.2.4
+ipython
+python-memcached==1.47
+South
+
+# -e git+https://github.com/boto/boto.git@ef5b67b#egg=boto
+# python-amazon-product-api

@@ -1,0 +1,2 @@
+#!/bin/sh
+DJANGO_SETTINGS_MODULE=tbdd.configs.${DEPLOYMENT_TARGET:="common"}.settings django-admin.py $@

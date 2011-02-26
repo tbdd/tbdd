@@ -1,0 +1,24 @@
+{% extends "dhead/base.html" %}
+
+{% block title %}{{ keywords|title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+    {% for item in item_list %}
+        {% include "dhead/itemlist_detail.html" %}
+    {% endfor %}
+
+    <p style="text-align:center;">
+        {% for page in pages %}
+            {% with keywords|slugify as keywords %}
+                {% if page == 1 %}
+                    <a href="{% url dhead_productlist keywords=keywords %}">1</a>
+                {% else %}
+                    <a href="{% url dhead_productlist keywords=keywords page=page %}">{{ page }}</a>
+                {% endif %}
+            {% endwith %}
+            {% if not forloop.last %}
+                &bull;
+            {% endif %}
+        {% endfor %}
+    </p>
+{% endblock %}

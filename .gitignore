@@ -1,0 +1,4 @@
+development.db
+tbdd/local_templates/*
+local_settings.py
+local_fabfile.py

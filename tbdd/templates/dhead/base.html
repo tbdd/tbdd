@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ storefront.site.name }}{% endblock %}
+
+{% block body %}
+    <div id="header">
+        <h1><a href="{% url dhead_productlist %}">{{ storefront.site.name }}</a></h1>
+
+        <p id="tagline">
+            {% blocktrans with storefront.primary_keywords as primary_keywords %}
+                Shop for the best {{ primary_keywords }} offers and deals
+            {% endblocktrans %}
+        </p>
+
+        <p id="welcome">
+            {% blocktrans with storefront.primary_keywords as primary_keywords and storefront.alternate_keywords as alternate_keywords %}
+                Welcome to the <strong>{{ primary_keywords }}</strong> Online Shop.
+                Get your bargain <strong>{{ primary_keywords }}</strong> deals here.
+                We have the best <em>{{ alternate_keywords }}</em> product offers.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div id="sidebar-left">
+            <div id="categories">
+                <h2>Categories</h2>
+
+                <ul>
+                    {% for category in storefront.category_set.all %}
+                        {% with category.keywords|slugify as keywords %}
+                            <li><a href="{% url dhead_productlist keywords=keywords %}">{{ category.title }}</a></li>
+                        {% endwith %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="footer">
+        <p>
+            {% blocktrans with storefront.site.domain as domain and storefront.primary_keywords as primary_keywords and storefront.alternate_keywords as alternate_keywords %}
+                <strong>{{ domain }}</strong> is the one-stop shop to find the best
+                {{ primary_keywords }} deals and offers.
+
+                We have discount, cheap, and wholesale offers for a wide variety of
+                {{ primary_keywords }} brands.
+
+                Feel free to browse our {{ alternate_keywords }} products.
+            {% endblocktrans %}
+        </p>
+
+        <p>
+            <a href="{% url dhead_about %}">{% trans "About" %}</a>
+            |
+            <a href="{% url dhead_privacy %}">{% trans "Privacy" %}</a>
+        </p>
+    </div>
+
+    {{ storefront.analytics_footer|safe }}
+{% endblock %}

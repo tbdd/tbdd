@@ -1,0 +1,54 @@
+{% extends "dhead/base.html" %}
+{% load dhead_tags %}
+
+{% block title %}{% with item|azitemattributes as attributes %}{{ attributes|aztitleattribute }}{% endwith %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="detail item">
+        {% with item|azitemattributes as attributes %}
+            {% with item|azasin as asin %}
+            {% with attributes|aztitleattribute|slugify as title_slug %}
+            {% with keywords|slugify as keywords %}
+                {# {% url dhead_productdetail keywords=keywords,title_slug=title_slug,asin=asin as detail_url %} #}
+
+                <h1 class="title">{{ attributes|aztitleattribute }}</h1>
+                <div class="price">
+                    {{ item|azformattedprice }}
+                    &bull;
+                    <a href="{{ item|azdetailpageurl }}">Buy</a>
+                </div>
+                <div class="detail">
+                    {% with item|azproductdescription as description %}
+                        {% if description %}
+                            <div class="description">{{ description }}</div>
+                        {% endif %}
+                    {% endwith %}
+                    {% with item|azlargeimage as image %}
+                        {% if image %}
+                            <div class="image"><img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"></div>
+                        {% endif %}
+                    {% endwith %}
+                    {% with attributes|azfeatureattributes as features %}
+                        {% if features %}
+                            <p><strong>Features include the following:</strong></p>
+                            <ul>
+                                {% for feature in features %}
+                                    <li>{{ feature }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+
+                    <p style="text-align:center;">
+                        Price: <strong>{{ item|azformattedprice }}</strong>
+                        <br>
+                        <a href="{{ item|azdetailpageurl }}"><img src="/assets/images/buy_az.gif" width="90" height="28" alt="Buy from amazon.com"></a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+        {% endwith %}
+    </div>
+{% endblock %}

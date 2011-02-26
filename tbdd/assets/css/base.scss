@@ -1,0 +1,140 @@
+$gutter: 15px;
+
+/* Global */
+
+em {
+  font-style: italic;
+}
+p {
+  margin-top: $gutter;
+}
+strong {
+  font-weight: bold;
+}
+
+
+/* Header */
+
+#header {
+  margin: $gutter;
+  h1 {
+    font-size: xx-large;
+    a {
+      text-decoration: none;
+    }
+  }
+  p {
+    &#tagline {
+      margin-top: 0;
+      font-weight: bold;
+    }
+  }
+}
+
+
+/* Main */
+
+#main {
+  position: relative;
+  #sidebar-left {
+    position: absolute;
+    top: 0;
+    left: $gutter;
+    width: $gutter * 15;
+    #categories {
+      h2 {
+        font-size: x-large;
+        margin-bottom: $gutter;
+      }
+      ul {
+        li {
+          border-bottom: 1px solid black;
+          &:first-child {
+            border-top: 1px solid black;
+          }
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  #content {
+    margin: $gutter;
+    margin-left: $gutter * 17;
+    .item {
+      position: relative;
+      border: 1px solid black;
+      margin-bottom: $gutter * 2;
+      h1.title, h3.title {
+        $color: white;
+        font-size: large;
+        padding: $gutter;
+        background-color: gray;
+        color: $color;
+        a {
+          color: $color;
+        }
+      }
+      .price {
+        $color: black;
+        margin: $gutter / 3;
+        padding: $gutter / 3 * 2;
+        background-color: white;
+        color: $color;
+        border: 1px solid black;
+        font-weight: bold;
+        a {
+          color: $color;
+        }
+      }
+      &.list .price {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &.detail .price {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .image {
+        &.floating {
+          float: left;
+        }
+        padding: {
+          left: $gutter;
+          top: $gutter;
+          right: $gutter;
+        };
+      }
+      .detail {
+        &.indented {
+          padding-left: 150px + $gutter * 3;
+        }
+        padding: {
+          top: $gutter;
+          bottom: $gutter;
+          left: $gutter;
+          right: $gutter;
+        };
+        ul {
+          padding-top: $gutter;
+          margin-left: 1.5em;
+          li {
+            list-style-type: disc;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+#footer {
+  margin: $gutter;
+}
+
+.clear {
+  clear: left;
+}

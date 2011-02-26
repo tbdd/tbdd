@@ -1,0 +1,40 @@
+{% load dhead_tags %}
+
+<div class="list item">
+    {% with item|azitemattributes as attributes %}
+        {% with item|azasin as asin %}
+        {% with attributes|aztitleattribute|slugify as title_slug %}
+        {% with keywords|slugify as keywords %}
+            {% url dhead_productdetail keywords=keywords,title_slug=title_slug,asin=asin as detail_url %}
+
+            <h3 class="title"><a href="{{ detail_url }}">{{ attributes|aztitleattribute }}</a></h3>
+            <div class="price">
+                <a href="{{ detail_url }}">{{ item|azformattedprice }}</a>
+            </div>
+            {% with item|azmediumimage as image %}
+                {% if image %}
+                    <div class="floating image"><a href="{{ detail_url }}"><img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"></a></div>
+                {% endif %}
+            {% endwith %}
+            <div class="indented detail">
+                {% with item|azproductdescription as description %}
+                    {% if description %}
+                        <div class="description">{{ description }}</div>
+                    {% endif %}
+                {% endwith %}
+                {% with attributes|azfeatureattributes as features %}
+                    {% if features %}
+                        <ul>
+                            {% for feature in features %}
+                                <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="clear"></div>
+        {% endwith %}
+        {% endwith %}
+        {% endwith %}
+    {% endwith %}
+</div>

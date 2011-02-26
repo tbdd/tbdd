@@ -1,0 +1,29 @@
+{% extends "dhead/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>About</h1>
+
+    <p>
+        {% blocktrans with storefront.site.domain as domain and storefront.primary_keywords as primary_keywords and storefront.alternate_keywords as alternate_keywords %}
+            {{ domain }} is a one-stop online {{ alternate_keywords }}
+            store where you can find the best {{ primary_keywords }}
+            deals and offers.
+        {% endblocktrans %}
+    </p>
+
+    <p>
+        {% blocktrans with storefront.site.domain as domain and storefront.primary_keywords as primary_keywords and storefront.alternate_keywords as alternate_keywords %}
+            We have discount, bargain, and wholesale offers for a wide variety of
+            <em>{{ primary_keywords }}</em> brands.
+            Feel free to search our {{ alternate_keywords }} products and read
+            customer reviews.
+        {% endblocktrans %}
+    </p>
+
+    <p>
+        {% blocktrans with storefront.site.domain as domain %}
+            You can contact us at admin@{{ domain }}.
+        {% endblocktrans %}
+    </p>
+{% endblock %}

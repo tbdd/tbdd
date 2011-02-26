@@ -1,0 +1,93 @@
+/* Global */
+em {
+  font-style: italic; }
+
+p {
+  margin-top: 15px; }
+
+strong {
+  font-weight: bold; }
+
+/* Header */
+#header {
+  margin: 15px; }
+  #header h1 {
+    font-size: xx-large; }
+    #header h1 a {
+      text-decoration: none; }
+  #header p#tagline {
+    margin-top: 0;
+    font-weight: bold; }
+
+/* Main */
+#main {
+  position: relative; }
+  #main #sidebar-left {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 225px; }
+    #main #sidebar-left #categories h2 {
+      font-size: x-large;
+      margin-bottom: 15px; }
+    #main #sidebar-left #categories ul li {
+      border-bottom: 1px solid black; }
+      #main #sidebar-left #categories ul li:first-child {
+        border-top: 1px solid black; }
+      #main #sidebar-left #categories ul li a {
+        text-decoration: none; }
+  #main #content {
+    margin: 15px;
+    margin-left: 255px; }
+    #main #content .item {
+      position: relative;
+      border: 1px solid black;
+      margin-bottom: 30px; }
+      #main #content .item h1.title, #main #content .item h3.title {
+        font-size: large;
+        padding: 15px;
+        background-color: gray;
+        color: white; }
+        #main #content .item h1.title a, #main #content .item h3.title a {
+          color: white; }
+      #main #content .item .price {
+        margin: 5px;
+        padding: 10px;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        font-weight: bold; }
+        #main #content .item .price a {
+          color: black; }
+      #main #content .item.list .price {
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+      #main #content .item.detail .price {
+        position: absolute;
+        top: 0;
+        right: 0; }
+      #main #content .item .image {
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-right: 15px; }
+        #main #content .item .image.floating {
+          float: left; }
+      #main #content .item .detail {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px; }
+        #main #content .item .detail.indented {
+          padding-left: 195px; }
+        #main #content .item .detail ul {
+          padding-top: 15px;
+          margin-left: 1.5em; }
+          #main #content .item .detail ul li {
+            list-style-type: disc; }
+
+#footer {
+  margin: 15px; }
+
+.clear {
+  clear: left; }

@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+    WSGIDaemonProcess tbdd-production user=tbdd group=tbdd threads=10 python-path=/srv/tbdd/lib/python2.6/site-packages
+    WSGIProcessGroup tbdd-production
+
+    WSGIScriptAlias / /srv/tbdd/releases/current/tbdd/configs/live/live_admin.wsgi
+    <Directory /srv/tbdd/releases/current/tbdd>
+        Order deny,allow
+        Allow from all
+    </Directory>
+    
+    Alias /media/ /srv/tbdd/lib/python2.6/site-packages/django/contrib/admin/media/
+
+    ErrorLog /var/log/apache2/tbdd/error_admin.log
+    LogLevel warn
+
+    CustomLog /var/log/apache2/tbdd/access_admin.log combined
+</VirtualHost>
